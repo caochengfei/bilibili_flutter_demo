@@ -1,6 +1,7 @@
 import 'package:bilibili_demo/http/core/hi_error.dart';
 import 'package:bilibili_demo/http/dao/home_dao.dart';
 import 'package:bilibili_demo/model/home_mo.dart';
+import 'package:bilibili_demo/model/video_model.dart';
 import 'package:bilibili_demo/util/color.dart';
 import 'package:bilibili_demo/util/toast.dart';
 import 'package:bilibili_demo/widget/hi_banner.dart';
@@ -22,7 +23,7 @@ class CFHomeTabPage extends StatefulWidget {
 
 class _CFHomeTabPageState extends State<CFHomeTabPage>
     with AutomaticKeepAliveClientMixin {
-  List<VideoMo> videoList = [];
+  List<VideoModel> videoList = [];
   var pageIndex = 1;
   ScrollController _scrollController = ScrollController();
   bool _loading = false;

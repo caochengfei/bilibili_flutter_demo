@@ -1,4 +1,5 @@
 import 'package:bilibili_demo/model/home_mo.dart';
+import 'package:bilibili_demo/model/video_model.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -61,7 +62,7 @@ class HiBanner extends StatelessWidget {
   void _handleClick(BannerMo? model) {
     if (model?.type == "video") {
       HiNavigator.getInstantce().onJumpTo(RouteStatus.detail,
-          args: {"video": VideoMo(vid: model!.url)});
+          args: {"video": VideoModel(vid: model!.url)});
     } else {
       print(model?.url);
       //todo

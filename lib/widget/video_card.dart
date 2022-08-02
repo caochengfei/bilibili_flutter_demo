@@ -1,4 +1,5 @@
 import 'package:bilibili_demo/model/home_mo.dart';
+import 'package:bilibili_demo/model/video_model.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
 import 'package:bilibili_demo/util/format_util.dart';
 import 'package:bilibili_demo/util/view_util.dart';
@@ -9,7 +10,7 @@ import 'package:transparent_image/transparent_image.dart';
 
 class VideoCard extends StatelessWidget {
   const VideoCard({Key? key, this.videoMo}) : super(key: key);
-  final VideoMo? videoMo;
+  final VideoModel? videoMo;
 
   @override
   Widget build(BuildContext context) {

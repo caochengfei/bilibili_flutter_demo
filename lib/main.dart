@@ -6,6 +6,7 @@ import 'package:bilibili_demo/http/db/hi_cache.dart';
 import 'package:bilibili_demo/http/request/notice_request.dart';
 import 'package:bilibili_demo/http/request/test_request.dart';
 import 'package:bilibili_demo/model/home_mo.dart';
+import 'package:bilibili_demo/model/video_model.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
 import 'package:bilibili_demo/util/toast.dart';
 import 'package:bilibili_demo/page/home_page.dart';
@@ -69,7 +70,7 @@ class BiliRouteDelegate extends RouterDelegate<BiliRoutePath>
   }
   RouteStatus _routeStatus = RouteStatus.home;
   List<MaterialPage> pages = [];
-  VideoMo? videoModel;
+  VideoModel? videoModel;
 
   RouteStatus get routeStatus {
     if (_routeStatus != RouteStatus.regis && !hasLogin) {

@@ -6,6 +6,7 @@ import 'package:bilibili_demo/navigator/hi_navigator.dart';
 import 'package:bilibili_demo/page/home_tab_page.dart';
 import 'package:bilibili_demo/util/color.dart';
 import 'package:bilibili_demo/util/toast.dart';
+import 'package:bilibili_demo/widget/hi_tab.dart';
 import 'package:bilibili_demo/widget/loading_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -91,21 +92,18 @@ class _CFHomePageState extends HiState<CFHomePage>
   bool get wantKeepAlive => true;
 
   _tabBar() {
-    return TabBar(
-        controller: _controller,
-        isScrollable: true,
-        labelColor: Colors.black,
-        indicator: UnderlineTabIndicator(
-            insets: EdgeInsets.only(left: 15, right: 15),
-            borderSide: BorderSide(color: primary, width: 3)),
-        tabs: categoryList.map<Tab>((tab) {
-          return Tab(
-            child: Padding(
-              child: Text(tab.name ?? ""),
-              padding: EdgeInsets.all(0),
-            ),
-          );
-        }).toList());
+    return HiTab(
+      categoryList.map<Tab>((tab) {
+        return Tab(
+          text: tab.name,
+        );
+      }).toList(),
+      controller: _controller,
+      fontSize: 16,
+      borderWidth: 3,
+      insets: 13,
+      unselectedLabelColor: Colors.black54,
+    );
   }
 
   void loadData() async {
