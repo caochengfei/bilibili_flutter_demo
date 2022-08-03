@@ -9,7 +9,6 @@ class HomeDao {
     request.pathParams = categoryName;
     request.add("pageIndex", pageIndex).add("pageSize", pageSize);
     var result = await HiNet.getInstance().fire(request);
-    print(result);
     return HomeMo.fromJson(result['data']);
   }
 }

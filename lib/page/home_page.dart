@@ -6,6 +6,7 @@ import 'package:bilibili_demo/navigator/hi_navigator.dart';
 import 'package:bilibili_demo/page/home_tab_page.dart';
 import 'package:bilibili_demo/util/color.dart';
 import 'package:bilibili_demo/util/toast.dart';
+import 'package:bilibili_demo/util/view_util.dart';
 import 'package:bilibili_demo/widget/hi_tab.dart';
 import 'package:bilibili_demo/widget/loading_container.dart';
 import 'package:flutter/material.dart';
@@ -69,8 +70,8 @@ class _CFHomePageState extends HiState<CFHomePage>
             statusStyle: StatusStyle.DARK,
           ),
           Container(
-            color: Colors.white,
-            padding: EdgeInsets.only(top: 30),
+            decoration: bottomBoxShadow(),
+            // padding: EdgeInsets.only(top: 30),
             child: _tabBar(),
           ),
           Flexible(

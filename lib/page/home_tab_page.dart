@@ -1,3 +1,4 @@
+import 'package:bilibili_demo/http/core/hi_base_tab_state.dart';
 import 'package:bilibili_demo/http/core/hi_error.dart';
 import 'package:bilibili_demo/http/dao/home_dao.dart';
 import 'package:bilibili_demo/model/home_mo.dart';
@@ -18,66 +19,18 @@ class CFHomeTabPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<CFHomeTabPage> createState() => _CFHomeTabPageState();
+  HiBaseTabState<HomeMo, VideoModel, CFHomeTabPage> createState() =>
+      _CFHomeTabPageState();
 }
 
-class _CFHomeTabPageState extends State<CFHomeTabPage>
-    with AutomaticKeepAliveClientMixin {
-  List<VideoModel> videoList = [];
-  var pageIndex = 1;
-  ScrollController _scrollController = ScrollController();
-  bool _loading = false;
-
+class _CFHomeTabPageState
+    extends HiBaseTabState<HomeMo, VideoModel, CFHomeTabPage> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _scrollController.addListener(() {
-      // 距离列表最底部距离
-      var dis = _scrollController.position.maxScrollExtent -
-          _scrollController.position.pixels;
-      print(dis);
-      if (dis < 300 && _loading == false) {
-        _loadData(loadMore: true);
-      }
-    });
-    _loadData();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: _loadData,
-      color: primary,
-      child: MediaQuery.removePadding(
-          removeTop: true,
-          context: context,
-          child: Container(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-              child: StaggeredGrid.count(
-                crossAxisCount: 2,
-                axisDirection: AxisDirection.down,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
-                children: [
-                  if (widget.bannerList != null)
-                    StaggeredGridTile.fit(
-                        crossAxisCellCount: 2, child: _banner()),
-                  ...videoList.map((videoMo) {
-                    return StaggeredGridTile.fit(
-                        crossAxisCellCount: 1,
-                        child: VideoCard(
-                          videoMo: videoMo,
-                        ));
-                  })
-                ],
-              ),
-            ),
-          )),
-    );
+    print(widget.catogery);
+    print(widget.bannerList);
   }
 
   _banner() {
@@ -89,40 +42,45 @@ class _CFHomeTabPageState extends State<CFHomeTabPage>
     );
   }
 
-  Future<void> _loadData({loadMore = false}) async {
-    _loading = true;
-    if (!loadMore) {
-      pageIndex = 1;
-    }
-    var currentIndex = pageIndex + (loadMore ? 1 : 0);
-    try {
-      HomeMo result = await HomeDao.getData(widget.catogery ?? "",
-          pageIndex: currentIndex, pageSize: 10);
-      setState(() {
-        if (loadMore && result.videoList != null) {
-          if (result.videoList!.isNotEmpty) {
-            videoList = [...videoList, ...result.videoList!];
-            pageIndex++;
-          }
-        } else {
-          videoList = result.videoList ?? [];
-        }
-      });
-      Future.delayed(Duration(milliseconds: 1000), () {
-        _loading = false;
-      });
-    } on NeedAuth catch (e) {
-      _loading = false;
-      print(e);
-      showWaarnToast(e.message);
-    } on HiNetError catch (e) {
-      _loading = false;
-      print(e);
-      showWaarnToast(e.message);
-    }
-  }
-
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
+
+  @override
+  get contentChild => SingleChildScrollView(
+        controller: scrollController,
+        physics: AlwaysScrollableScrollPhysics(),
+        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+        child: StaggeredGrid.count(
+          crossAxisCount: 2,
+          axisDirection: AxisDirection.down,
+          mainAxisSpacing: 4,
+          crossAxisSpacing: 4,
+          children: [
+            if (widget.bannerList != null)
+              StaggeredGridTile.fit(crossAxisCellCount: 2, child: _banner()),
+            ...dataList.map((videoMo) {
+              return StaggeredGridTile.fit(
+                  crossAxisCellCount: 1,
+                  child: VideoCard(
+                    videoMo: videoMo,
+                  ));
+            })
+          ],
+        ),
+      );
+
+  @override
+  Future<HomeMo> getData(int pageIndex) async {
+    // TODO: implement getData
+    HomeMo result = await HomeDao.getData(widget.catogery ?? "",
+        pageIndex: pageIndex, pageSize: 10);
+    return result;
+  }
+
+  @override
+  List<VideoModel> parseList(HomeMo result) {
+    // TODO: implement parseList
+    return result.videoList ?? [VideoModel()];
+  }
 }
