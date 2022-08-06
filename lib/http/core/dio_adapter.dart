@@ -3,10 +3,10 @@ import 'package:bilibili_demo/http/core/hi_net_adapter.dart';
 import 'package:dio/dio.dart';
 
 import '../core/hi_net_adapter.dart';
-import '../request/base_request.dart';
+import 'hi_base_request.dart';
 
 class DioAdapter extends HiNetAdapter {
-  Future<HiNetResponse> send<T>(BaseRequest request) async {
+  Future<HiNetResponse> send<T>(HiBaseRequest request) async {
     late Response response;
     Options option = Options(headers: request.header);
     print("dio:header: ${request.header}");
@@ -32,7 +32,7 @@ class DioAdapter extends HiNetAdapter {
     return buildRes(response, request);
   }
 
-  HiNetResponse buildRes(Response response, BaseRequest request) {
+  HiNetResponse buildRes(Response response, HiBaseRequest request) {
     return HiNetResponse(response.data,
         request: request,
         statusCode: response.statusCode,

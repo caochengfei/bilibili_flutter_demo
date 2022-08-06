@@ -1,4 +1,6 @@
-import 'package:bilibili_demo/http/request/base_request.dart';
+import 'package:bilibili_demo/http/core/hi_base_request.dart';
+
+import 'base_request.dart';
 
 class RegisRequest extends BaseRequest {
   @override

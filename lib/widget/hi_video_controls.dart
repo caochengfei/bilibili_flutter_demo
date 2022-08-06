@@ -107,8 +107,8 @@ class _MaterialControlsState extends State<MaterialControls>
                   child: CircularProgressIndicator(),
                 )
               else
-                _buildHitArea(),
-              // _buildActionBar(),
+                // _buildActionBar(),
+                widget.barrageUI ?? Container(),
               _overlayUI(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,

@@ -1,6 +1,6 @@
 import 'package:bilibili_demo/http/core/hi_net.dart';
 import 'package:bilibili_demo/http/db/hi_cache.dart';
-import 'package:bilibili_demo/http/request/base_request.dart';
+import 'package:bilibili_demo/http/core/hi_base_request.dart';
 import 'package:bilibili_demo/http/request/login_request.dart';
 import 'package:bilibili_demo/http/request/regis_request.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class LoginDao {
   }
 
   static _send(String userName, String password, {imoocId, orderId}) async {
-    BaseRequest request;
+    HiBaseRequest request;
     if (imoocId != null && orderId != null) {
       request = RegisRequest();
     } else {
@@ -31,7 +31,6 @@ class LoginDao {
         .add("orderId", orderId);
 
     var result = await HiNet.getInstance().fire(request);
-    print("logon_dao$result");
     if (result['code'] == 0 && result['data'] != null) {
       // 保存登录令牌
       HiCache.getInstance().setString(BOARDING_PASS, result['data']);

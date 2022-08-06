@@ -2,6 +2,7 @@ import 'package:bilibili_demo/http/core/hi_error.dart';
 import 'package:bilibili_demo/http/core/hi_net.dart';
 import 'package:bilibili_demo/http/dao/login_dao.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
+import 'package:bilibili_demo/provider/theme_provider.dart';
 import 'package:bilibili_demo/util/string_util.dart';
 import 'package:bilibili_demo/util/toast.dart';
 import 'package:bilibili_demo/widget/appbar.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import '../widget/login_input.dart';
 import '../widget/login_effect.dart';
+import 'package:provider/provider.dart';
 
 class CFRegisPage extends StatefulWidget {
   const CFRegisPage({Key? key}) : super(key: key);
@@ -33,6 +35,7 @@ class _CFRegisPageState extends State<CFRegisPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar("注册", "登录", () {
+        context.read<ThemeProvider>().setTheme(ThemeMode.light);
         HiNavigator.getInstantce().onJumpTo(RouteStatus.login);
       }),
       body: Container(

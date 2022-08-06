@@ -2,7 +2,7 @@ import 'package:bilibili_demo/http/core/dio_adapter.dart';
 import 'package:bilibili_demo/http/core/hi_error.dart';
 import 'package:bilibili_demo/http/core/hi_net_adapter.dart';
 import 'package:bilibili_demo/http/core/mock_adapter.dart';
-import 'package:bilibili_demo/http/request/base_request.dart';
+import 'package:bilibili_demo/http/core/hi_base_request.dart';
 
 class HiNet {
   HiNet._();
@@ -14,7 +14,7 @@ class HiNet {
     return _instance!;
   }
 
-  Future fire(BaseRequest request) async {
+  Future fire(HiBaseRequest request) async {
     late HiNetResponse response;
     var error;
     try {
@@ -53,7 +53,7 @@ class HiNet {
     return result;
   }
 
-  Future<dynamic> send<T>(BaseRequest request) async {
+  Future<dynamic> send<T>(HiBaseRequest request) async {
     printLog("url:${request.url()}");
 
     HiNetAdapter adapter = DioAdapter();

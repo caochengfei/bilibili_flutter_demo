@@ -1,7 +1,15 @@
+import 'dart:io';
+
+import 'package:bilibili_demo/navigator/hi_navigator.dart';
+import 'package:bilibili_demo/provider/theme_provider.dart';
+import 'package:bilibili_demo/util/color.dart';
 import 'package:bilibili_demo/util/format_util.dart';
+import 'package:bilibili_demo/widget/navigationbar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 Widget cachedImage(String url, {double? width, double? height}) {
   return CachedNetworkImage(
@@ -62,12 +70,53 @@ SizedBox hiSpace({double height: 1, double width: 1}) {
   );
 }
 
-BoxDecoration bottomBoxShadow() {
+BoxDecoration? bottomBoxShadow(BuildContext context) {
+  var themeProvider = context.watch<ThemeProvider>();
+  if (themeProvider.isDark()) {
+    return null;
+  }
   return BoxDecoration(color: Colors.white, boxShadow: [
     BoxShadow(
         color: Colors.grey,
-        offset: Offset(0, 5),
-        blurRadius: 5.0,
-        spreadRadius: 1)
+        offset: Offset(0, 2),
+        blurRadius: 1.0,
+        spreadRadius: 0.3)
   ]);
+}
+
+///修改状态栏
+void changeStatusBar(
+    {color: Colors.white,
+    StatusStyle statusStyle: StatusStyle.DARK,
+    BuildContext? context}) {
+  if (context != null) {
+    //fix Tried to listen to a value exposed with provider, from outside of the widget tree.
+    var themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    if (themeProvider.isDark()) {
+      statusStyle = StatusStyle.LIGHT;
+      color = HiColor.dark_bg;
+    }
+  }
+  // var page = HiNavigator.getInstantce().getCurrent()?.page;
+  // //fix Android切换 profile页面状态栏变白问题
+  // if (page is ProfilePage) {
+  //   color = Colors.transparent;
+  // } else if (page is VideoDetailPage) {
+  //   color = Colors.black;
+  //   statusStyle = StatusStyle.LIGHT_CONTENT;
+  // }
+  //沉浸式状态栏样式
+  var brightness;
+  if (Platform.isIOS) {
+    brightness =
+        statusStyle == StatusStyle.LIGHT ? Brightness.dark : Brightness.light;
+  } else {
+    brightness =
+        statusStyle == StatusStyle.DARK ? Brightness.light : Brightness.dark;
+  }
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: brightness,
+    statusBarIconBrightness: brightness,
+  ));
 }

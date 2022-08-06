@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:bilibili_demo/http/dao/login_dao.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
+import 'package:bilibili_demo/provider/theme_provider.dart';
 import 'package:bilibili_demo/util/toast.dart';
 import 'package:bilibili_demo/widget/appbar.dart';
 import 'package:bilibili_demo/widget/login_button.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import '../util/string_util.dart';
 import '../http/core/hi_error.dart';
+import 'package:provider/provider.dart';
 
 class CFLoginPage extends StatefulWidget {
   const CFLoginPage({Key? key}) : super(key: key);
@@ -30,6 +32,7 @@ class _CFLoginPageState extends State<CFLoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar("密码登录", "注册", () {
+        context.read<ThemeProvider>().setTheme(ThemeMode.dark);
         HiNavigator.getInstantce().onJumpTo(RouteStatus.regis);
       }),
       body: Container(

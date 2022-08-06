@@ -51,7 +51,7 @@ class _CFRankingPageState extends State<CFRankingPage>
       child: Container(
         alignment: Alignment.center,
         child: _tabBar(),
-        decoration: bottomBoxShadow(),
+        decoration: bottomBoxShadow(context),
       ),
     );
   }

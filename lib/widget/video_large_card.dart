@@ -1,10 +1,12 @@
 import 'package:bilibili_demo/model/video_model.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
+import 'package:bilibili_demo/provider/theme_provider.dart';
 import 'package:bilibili_demo/util/format_util.dart';
 import 'package:bilibili_demo/util/view_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
 class VideoLargeCard extends StatelessWidget {
   final VideoModel? videoModel;
@@ -12,6 +14,9 @@ class VideoLargeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = context.watch<ThemeProvider>();
+    Color textColor = themeProvider.isDark() ? Colors.white70 : Colors.black87;
+
     return GestureDetector(
       onTap: () {
         HiNavigator.getInstantce()
@@ -23,7 +28,7 @@ class VideoLargeCard extends StatelessWidget {
         height: 106,
         decoration: BoxDecoration(border: borderLine(context)),
         child: Row(
-          children: [_itemImage(context), _buildContent()],
+          children: [_itemImage(context), _buildContent(textColor)],
         ),
       ),
     );
@@ -55,7 +60,7 @@ class VideoLargeCard extends StatelessWidget {
     );
   }
 
-  _buildContent() {
+  _buildContent(Color textColor) {
     return Expanded(
         child: Container(
       padding: EdgeInsets.only(top: 5, left: 8),
@@ -65,15 +70,15 @@ class VideoLargeCard extends StatelessWidget {
         children: [
           Text(
             videoModel?.title ?? "",
-            style: TextStyle(fontSize: 12, color: Colors.black87),
+            style: TextStyle(fontSize: 12, color: textColor),
           ),
-          _buildBottonContent()
+          _buildBottonContent(textColor)
         ],
       ),
     ));
   }
 
-  _buildBottonContent() {
+  _buildBottonContent(Color textColor) {
     return Column(
       children: [
         // 作者

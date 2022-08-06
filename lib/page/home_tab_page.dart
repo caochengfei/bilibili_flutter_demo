@@ -10,7 +10,7 @@ import 'package:bilibili_demo/widget/video_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_nested/flutter_nested.dart';
 
 class CFHomeTabPage extends StatefulWidget {
   final String? catogery;
@@ -46,29 +46,45 @@ class _CFHomeTabPageState
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
+  // @override
+  // get contentChild => SingleChildScrollView(
+  //       controller: scrollController,
+  //       physics: AlwaysScrollableScrollPhysics(),
+  //       padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+  //       child: StaggeredGrid.count(
+  //         crossAxisCount: 2,
+  //         axisDirection: AxisDirection.down,
+  //         mainAxisSpacing: 4,
+  //         crossAxisSpacing: 4,
+  //         children: [
+  //           if (widget.bannerList != null)
+  //             StaggeredGridTile.fit(crossAxisCellCount: 2, child: _banner()),
+  //           ...dataList.map((videoMo) {
+  //             return StaggeredGridTile.fit(
+  //                 crossAxisCellCount: 1,
+  //                 child: VideoCard(
+  //                   videoMo: videoMo,
+  //                 ));
+  //           })
+  //         ],
+  //       ),
+  //     );
+
   @override
-  get contentChild => SingleChildScrollView(
-        controller: scrollController,
-        physics: AlwaysScrollableScrollPhysics(),
-        padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-        child: StaggeredGrid.count(
-          crossAxisCount: 2,
-          axisDirection: AxisDirection.down,
-          mainAxisSpacing: 4,
-          crossAxisSpacing: 4,
-          children: [
-            if (widget.bannerList != null)
-              StaggeredGridTile.fit(crossAxisCellCount: 2, child: _banner()),
-            ...dataList.map((videoMo) {
-              return StaggeredGridTile.fit(
-                  crossAxisCellCount: 1,
-                  child: VideoCard(
-                    videoMo: videoMo,
-                  ));
-            })
-          ],
-        ),
-      );
+  get contentChild => HiNestedScrollView(
+      itemCount: dataList.length,
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+      controller: scrollController,
+      headers: [
+        if (widget.bannerList != null)
+          Padding(
+            padding: EdgeInsets.only(bottom: 8),
+            child: _banner(),
+          )
+      ],
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, childAspectRatio: 1.0),
+      itemBuilder: itemBuilder);
 
   @override
   Future<HomeMo> getData(int pageIndex) async {
@@ -82,5 +98,11 @@ class _CFHomeTabPageState
   List<VideoModel> parseList(HomeMo result) {
     // TODO: implement parseList
     return result.videoList ?? [VideoModel()];
+  }
+
+  Widget itemBuilder(BuildContext context, int index) {
+    return VideoCard(
+      videoMo: dataList[index],
+    );
   }
 }

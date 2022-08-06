@@ -1,4 +1,5 @@
-import '../request/base_request.dart';
+import '../core/hi_base_request.dart';
+import 'base_request.dart';
 
 class VideoDetailRequest extends BaseRequest {
   @override

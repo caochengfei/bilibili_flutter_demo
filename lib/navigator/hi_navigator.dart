@@ -1,4 +1,5 @@
 import 'package:bilibili_demo/navigator/tabbar.dart';
+import 'package:bilibili_demo/page/dark_mode_page.dart';
 import 'package:bilibili_demo/page/home_page.dart';
 import 'package:bilibili_demo/page/login_page.dart';
 import 'package:bilibili_demo/page/regis_page.dart';
@@ -24,7 +25,7 @@ int getPageIndex(List<MaterialPage> pages, RouteStatus status) {
 }
 
 // 路由状态枚举
-enum RouteStatus { login, regis, home, detail, unknow }
+enum RouteStatus { login, regis, home, detail, unknow, darkMode }
 
 // 获得路由状态
 RouteStatus getStatus(MaterialPage page) {
@@ -36,6 +37,8 @@ RouteStatus getStatus(MaterialPage page) {
     return RouteStatus.home;
   } else if (page.child is CFVideoDetailPage) {
     return RouteStatus.detail;
+  } else if (page.child is DarkModePage) {
+    return RouteStatus.darkMode;
   } else {
     return RouteStatus.unknow;
   }
@@ -120,6 +123,8 @@ class HiNavigator extends _RouteJumpListener {
     });
     _current = current;
   }
+
+  getCurrent() {}
 }
 
 // 抽象类供HiNavigator实现

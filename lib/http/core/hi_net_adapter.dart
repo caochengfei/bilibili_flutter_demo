@@ -1,14 +1,14 @@
 import 'dart:convert';
-import 'package:bilibili_demo/http/request/base_request.dart';
+import 'package:bilibili_demo/http/core/hi_base_request.dart';
 
 abstract class HiNetAdapter {
-  Future<HiNetResponse> send<T>(BaseRequest request);
+  Future<HiNetResponse> send<T>(HiBaseRequest request);
 }
 
 // 统一网络层返回格式
 class HiNetResponse<T> {
   dynamic data;
-  BaseRequest? request;
+  HiBaseRequest? request;
   int? statusCode;
   String? statusMessage;
   dynamic extra;

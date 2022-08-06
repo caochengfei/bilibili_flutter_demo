@@ -5,10 +5,12 @@ appBar(String title, String rightTitle, VoidCallback? rightButtonClick) {
   return AppBar(
     centerTitle: false,
     titleSpacing: 0,
-    leading: BackButton(),
+    leading: BackButton(
+      color: Colors.grey,
+    ),
     title: Text(
       title,
-      style: TextStyle(fontSize: 18),
+      style: TextStyle(fontSize: 18, color: Colors.grey),
     ),
     actions: [
       InkWell(

@@ -4,6 +4,7 @@ import 'package:bilibili_demo/http/dao/home_dao.dart';
 import 'package:bilibili_demo/model/home_mo.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
 import 'package:bilibili_demo/page/home_tab_page.dart';
+import 'package:bilibili_demo/provider/theme_provider.dart';
 import 'package:bilibili_demo/util/color.dart';
 import 'package:bilibili_demo/util/toast.dart';
 import 'package:bilibili_demo/util/view_util.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import '../http/dao/home_dao.dart';
 import '../widget/navigationbar.dart';
+import 'package:provider/provider.dart';
 
 class CFHomePage extends StatefulWidget {
   final ValueChanged<int>? onJumpTo;
@@ -23,12 +25,16 @@ class CFHomePage extends StatefulWidget {
 }
 
 class _CFHomePageState extends HiState<CFHomePage>
-    with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
+    with
+        AutomaticKeepAliveClientMixin,
+        TickerProviderStateMixin,
+        WidgetsBindingObserver {
   var listener;
   List<CategoryMo> categoryList = [];
   List<BannerMo> bannerList = [];
   TabController? _controller;
   bool _isLoading = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -57,6 +63,13 @@ class _CFHomePageState extends HiState<CFHomePage>
   }
 
   @override
+  void didChangePlatformBrightness() {
+    // TODO: implement didChangePlatformBrightness
+    context.read<ThemeProvider>().darkModeChange();
+    super.didChangePlatformBrightness();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: LoadingContainer(
@@ -70,7 +83,7 @@ class _CFHomePageState extends HiState<CFHomePage>
             statusStyle: StatusStyle.DARK,
           ),
           Container(
-            decoration: bottomBoxShadow(),
+            decoration: bottomBoxShadow(context),
             // padding: EdgeInsets.only(top: 30),
             child: _tabBar(),
           ),

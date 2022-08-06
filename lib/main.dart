@@ -8,6 +8,10 @@ import 'package:bilibili_demo/http/request/test_request.dart';
 import 'package:bilibili_demo/model/home_mo.dart';
 import 'package:bilibili_demo/model/video_model.dart';
 import 'package:bilibili_demo/navigator/hi_navigator.dart';
+import 'package:bilibili_demo/page/dark_mode_page.dart';
+import 'package:bilibili_demo/provider/hi_provider.dart';
+import 'package:bilibili_demo/provider/theme_provider.dart';
+import 'package:bilibili_demo/util/hi_defend.dart';
 import 'package:bilibili_demo/util/toast.dart';
 import 'package:bilibili_demo/page/home_page.dart';
 import 'package:bilibili_demo/page/login_page.dart';
@@ -16,9 +20,10 @@ import 'package:bilibili_demo/page/video_detail_page.dart';
 import 'package:bilibili_demo/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:bilibili_demo/navigator/tabbar.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  HIDefend().run(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -45,10 +50,17 @@ class _MyAppState extends State<MyApp> {
                     child: CircularProgressIndicator(),
                   ),
                 );
-          return MaterialApp(
-            home: widget,
-            theme: ThemeData(primaryColor: Colors.white),
-          );
+          return MultiProvider(
+              providers: topProviders,
+              child: Consumer<ThemeProvider>(builder:
+                  (BuildContext context, ThemeProvider themeProvider, child) {
+                return MaterialApp(
+                  home: widget,
+                  theme: themeProvider.getTheme(),
+                  darkTheme: themeProvider.getTheme(isDarkMode: true),
+                  themeMode: themeProvider.getThemeMode(),
+                );
+              }));
         });
   }
 }
@@ -107,6 +119,8 @@ class BiliRouteDelegate extends RouterDelegate<BiliRoutePath>
       page = pageWrap(CFRegisPage());
     } else if (routeStatus == RouteStatus.login) {
       page = pageWrap(CFLoginPage());
+    } else if (routeStatus == RouteStatus.darkMode) {
+      page = pageWrap(DarkModePage());
     }
 
     tempPages = [...tempPages, page];

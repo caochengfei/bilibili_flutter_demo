@@ -1,7 +1,9 @@
+import 'package:bilibili_demo/provider/theme_provider.dart';
 import 'package:bilibili_demo/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
 class HiTab extends StatelessWidget {
   const HiTab(this.tabs,
@@ -21,11 +23,14 @@ class HiTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = context.watch<ThemeProvider>();
+    var _unselectedLabelColor =
+        themeProvider.isDark() ? Colors.white70 : unselectedLabelColor;
     return TabBar(
         controller: controller,
         isScrollable: true,
         labelColor: primary,
-        unselectedLabelColor: unselectedLabelColor,
+        unselectedLabelColor: _unselectedLabelColor,
         labelStyle: TextStyle(fontSize: fontSize),
         indicator: UnderlineTabIndicator(
             insets: EdgeInsets.only(left: insets, right: insets),

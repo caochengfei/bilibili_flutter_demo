@@ -1,4 +1,4 @@
-/// 网络异常同意格式类
+/// 网络异常统一格式类
 class HiNetError implements Exception {
   final int code;
   final String message;
