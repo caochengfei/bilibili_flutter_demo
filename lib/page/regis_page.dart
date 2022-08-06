@@ -28,8 +28,8 @@ class _CFRegisPageState extends State<CFRegisPage> {
   String? userName;
   String? password;
   String? rePassword;
-  String? imooocId;
-  String? orderId;
+  String imooocId = "5434499";
+  String orderId = "7748";
 
   @override
   Widget build(BuildContext context) {
@@ -83,25 +83,6 @@ class _CFRegisPageState extends State<CFRegisPage> {
                 });
               },
             ),
-            LoginInput(
-              keyboardType: TextInputType.number,
-              title: "ID",
-              hint: "请输入你的慕课网ID",
-              onChanged: (text) {
-                imooocId = text;
-                checkInput();
-              },
-            ),
-            LoginInput(
-              keyboardType: TextInputType.number,
-              lineStretch: true,
-              title: "订单号",
-              hint: "请输入订单号后四位",
-              onChanged: (text) {
-                orderId = text;
-                checkInput();
-              },
-            ),
             Padding(
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
               child: LoginButton(
@@ -138,7 +119,7 @@ class _CFRegisPageState extends State<CFRegisPage> {
   void send() async {
     try {
       var result =
-          await LoginDao.regis(userName!, password!, imooocId!, orderId!);
+          await LoginDao.regis(userName!, password!, imooocId, orderId);
       print("regins: - $result");
       if (result['code'] == 0) {
         showToast("注册成功");
@@ -157,7 +138,7 @@ class _CFRegisPageState extends State<CFRegisPage> {
     String? tips;
     if (password != rePassword) {
       tips = "两次密码不一致";
-    } else if (orderId?.length != 4) {
+    } else if (orderId.length != 4) {
       tips = "请输入订单号后四位";
     }
     if (tips != null) {

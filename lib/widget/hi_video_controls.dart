@@ -109,7 +109,6 @@ class _MaterialControlsState extends State<MaterialControls>
               else
                 // _buildActionBar(),
                 widget.barrageUI ?? Container(),
-              _overlayUI(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -122,6 +121,7 @@ class _MaterialControlsState extends State<MaterialControls>
                       child:
                           _buildSubtitles(context, chewieController.subtitle!),
                     ),
+                  _overlayUI(),
                   _buildHitArea(),
                   _buildBottomBar(context),
                 ],
