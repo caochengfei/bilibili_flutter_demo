@@ -4,6 +4,7 @@ import 'package:bilibili_demo/widget/hi_blur.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 // 增值服务
 class BenefitCard extends StatelessWidget {
@@ -13,7 +14,7 @@ class BenefitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10, right: 5, top: 15),
+      padding: EdgeInsets.only(left: 10.px, right: 5.px, top: 15.px),
       child: Column(
         children: [
           _buildTitle(),
@@ -25,17 +26,17 @@ class BenefitCard extends StatelessWidget {
 
   _buildTitle() {
     return Container(
-      padding: EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.only(bottom: 10.px),
       child: Row(
         children: [
           Text(
             '增值服务',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 15.px, fontWeight: FontWeight.bold),
           ),
-          hiSpace(width: 10),
+          hiSpace(width: 10.px),
           Text(
             '购买后再次打开',
-            style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+            style: TextStyle(fontSize: 12.px, color: Colors.grey[600]),
           )
         ],
       ),
@@ -46,13 +47,13 @@ class BenefitCard extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Padding(
-        padding: EdgeInsets.only(right: 5, bottom: 7),
+        padding: EdgeInsets.only(right: 5.px, bottom: 7.px),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(5.px),
           child: Container(
             alignment: Alignment.center,
             width: width,
-            height: 60,
+            height: 60.px,
             decoration: BoxDecoration(color: Colors.deepOrange),
             child: Stack(
               children: [
@@ -77,7 +78,7 @@ class BenefitCard extends StatelessWidget {
     if (benefitList.isEmpty) return Container();
     // 根据卡片数量计算出每个卡片宽度
     var width = (MediaQuery.of(context).size.width -
-            20 -
+            20.px -
             (benefitList.length - 1) * 5) /
         benefitList.length;
     return Row(

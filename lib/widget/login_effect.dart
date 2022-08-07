@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class CFLoginEffect extends StatefulWidget {
   final bool protect;
@@ -16,7 +17,7 @@ class _CFLoginEffectState extends State<CFLoginEffect> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 10.px),
       decoration: BoxDecoration(
           color: Colors.grey[100],
           border: Border(bottom: BorderSide(color: Colors.grey[300]!))),
@@ -26,8 +27,8 @@ class _CFLoginEffectState extends State<CFLoginEffect> {
           _image(true),
           Image(
             image: AssetImage("images/logo.png"),
-            height: 90,
-            width: 90,
+            height: 90.px,
+            width: 90.px,
           ),
           _image(false)
         ],
@@ -44,7 +45,7 @@ class _CFLoginEffectState extends State<CFLoginEffect> {
         : 'images/head_right.png';
     return Image(
       image: AssetImage(left ? headLeft : headRight),
-      height: 90,
+      height: 90.px,
     );
   }
 }

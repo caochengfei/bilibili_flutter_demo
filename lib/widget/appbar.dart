@@ -1,5 +1,6 @@
 import 'package:bilibili_demo/util/view_util.dart';
 import 'package:flutter/material.dart';
+import '../util/rpx.dart';
 
 appBar(String title, String rightTitle, VoidCallback? rightButtonClick) {
   return AppBar(
@@ -10,17 +11,17 @@ appBar(String title, String rightTitle, VoidCallback? rightButtonClick) {
     ),
     title: Text(
       title,
-      style: TextStyle(fontSize: 18, color: Colors.grey),
+      style: TextStyle(fontSize: 18.px, color: Colors.grey),
     ),
     actions: [
       InkWell(
         onTap: rightButtonClick,
         child: Container(
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: EdgeInsets.only(left: 15.px, right: 15.px),
           alignment: Alignment.center,
           child: Text(
             rightTitle,
-            style: TextStyle(fontSize: 18, color: Colors.grey[500]),
+            style: TextStyle(fontSize: 18.px, color: Colors.grey[500]),
             textAlign: TextAlign.center,
           ),
         ),
@@ -31,7 +32,7 @@ appBar(String title, String rightTitle, VoidCallback? rightButtonClick) {
 
 videoAppBar() {
   return Container(
-    padding: EdgeInsets.only(right: 8),
+    padding: EdgeInsets.only(right: 8.px),
     decoration: BoxDecoration(
       gradient: blackLinearGradient(fromTop: true),
     ),
@@ -46,14 +47,14 @@ videoAppBar() {
             Icon(
               Icons.live_tv_rounded,
               color: Colors.white,
-              size: 20,
+              size: 20.px,
             ),
             Padding(
-                padding: EdgeInsets.only(left: 12),
+                padding: EdgeInsets.only(left: 12.px),
                 child: Icon(
                   Icons.more_vert_rounded,
                   color: Colors.white,
-                  size: 20,
+                  size: 20.px,
                 ))
           ],
         )

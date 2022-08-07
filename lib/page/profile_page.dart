@@ -12,6 +12,7 @@ import 'package:bilibili_demo/widget/hi_flexible_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class CFProfilePage extends StatefulWidget {
   const CFProfilePage({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _CFProfilePageState extends State<CFProfilePage>
               ];
             },
             body: ListView(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 10.px),
               children: [
                 ..._buildContentList(),
               ],
@@ -131,7 +132,7 @@ class _CFProfilePageState extends State<CFProfilePage>
   _buildProfileTab() {
     if (_profileMo == null) return Container();
     return Container(
-      padding: EdgeInsets.only(top: 5, bottom: 5),
+      padding: EdgeInsets.only(top: 5.px, bottom: 5.px),
       decoration: BoxDecoration(color: Colors.white54),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -151,11 +152,11 @@ class _CFProfilePageState extends State<CFProfilePage>
       children: [
         Text(
           '$count',
-          style: TextStyle(fontSize: 15, color: Colors.black87),
+          style: TextStyle(fontSize: 15.px, color: Colors.black87),
         ),
         Text(
           text,
-          style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+          style: TextStyle(fontSize: 12.px, color: Colors.grey[600]),
         ),
       ],
     );

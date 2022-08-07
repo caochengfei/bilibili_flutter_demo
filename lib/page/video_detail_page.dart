@@ -27,6 +27,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_overlay/flutter_overlay.dart';
 import '../model/video_model.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class CFVideoDetailPage extends StatefulWidget {
   const CFVideoDetailPage({Key? key, this.videoModel}) : super(key: key);
@@ -110,8 +111,8 @@ class _CFVideoDetailPageState extends State<CFVideoDetailPage>
       shadowColor: themeMode.isDark() ? null : Colors.grey[100],
       child: Container(
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 20),
-        height: 39,
+        padding: EdgeInsets.only(left: 20.px),
+        height: 39.px,
         color: themeMode.isDark() ? HiColor.dark_bg : Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

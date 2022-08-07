@@ -9,6 +9,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class VideoCard extends StatelessWidget {
   const VideoCard({Key? key, this.videoMo}) : super(key: key);
@@ -25,12 +26,12 @@ class VideoCard extends StatelessWidget {
               .onJumpTo(RouteStatus.detail, args: {"videoMo": videoMo});
         },
         child: SizedBox(
-          height: 200,
+          height: 200.px,
           child: Card(
             // 取消卡片边距
-            margin: EdgeInsets.only(left: 4, right: 4, bottom: 8),
+            margin: EdgeInsets.only(left: 4.px, right: 4.px, bottom: 8.px),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(5.px),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [_itemImage(context), _infoText(textColor)],
@@ -45,10 +46,11 @@ class VideoCard extends StatelessWidget {
     return Stack(
       children: [
         cachedImage(videoMo?.cover ?? "",
-            width: size.width / 2 - 10, height: 120),
+            width: size.width / 2 - 10.px, height: 100.px),
         Positioned(
           child: Container(
-              padding: EdgeInsets.only(left: 8, right: 8, bottom: 3, top: 5),
+              padding: EdgeInsets.only(
+                  left: 8.px, right: 8.px, bottom: 3.px, top: 5.px),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.black54, Colors.transparent],
@@ -83,13 +85,13 @@ class VideoCard extends StatelessWidget {
           Icon(
             icon,
             color: Colors.white,
-            size: 12,
+            size: 12.px,
           ),
         Padding(
-          padding: EdgeInsets.only(left: 3),
+          padding: EdgeInsets.only(left: 3.px),
           child: Text(
             views,
-            style: TextStyle(color: Colors.white, fontSize: 10),
+            style: TextStyle(color: Colors.white, fontSize: 10.px),
           ),
         )
       ],
@@ -99,16 +101,17 @@ class VideoCard extends StatelessWidget {
   _infoText(Color textColor) {
     return Expanded(
         child: Container(
-      padding: EdgeInsets.only(top: 5, left: 8, right: 8, bottom: 5),
+      padding:
+          EdgeInsets.only(top: 5.px, left: 8.px, right: 8.px, bottom: 5.px),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             videoMo?.title ?? "",
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12, color: textColor),
+            style: TextStyle(fontSize: 12.px, color: textColor),
           ),
           _onwer(textColor)
         ],
@@ -124,21 +127,21 @@ class VideoCard extends StatelessWidget {
         Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: cachedImage(owner.face ?? "", width: 24, height: 24),
+              borderRadius: BorderRadius.circular(12.px),
+              child: cachedImage(owner.face ?? "", width: 24.px, height: 24.px),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 8),
+              padding: EdgeInsets.only(left: 8.px),
               child: Text(
                 owner.name ?? "",
-                style: TextStyle(fontSize: 11, color: textColor),
+                style: TextStyle(fontSize: 11.px, color: textColor),
               ),
             )
           ],
         ),
         Icon(
           Icons.more_vert_sharp,
-          size: 15,
+          size: 15.px,
           color: Colors.grey,
         ),
       ],

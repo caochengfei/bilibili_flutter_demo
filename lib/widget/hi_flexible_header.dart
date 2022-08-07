@@ -2,6 +2,7 @@ import 'package:bilibili_demo/util/view_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 // 可动态改变位置的header组建
 // 性能优化：局部刷新时候应用刷新原理
@@ -55,16 +56,16 @@ class _HiFlexibleHeaderState extends State<HiFlexibleHeader> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomLeft,
-      padding: EdgeInsets.only(bottom: _dyBottom, left: 10),
+      padding: EdgeInsets.only(bottom: _dyBottom, left: 10.px),
       child: Row(children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(23),
-          child: cachedImage(widget.face, width: 46, height: 46),
+          borderRadius: BorderRadius.circular(23.px),
+          child: cachedImage(widget.face, width: 46.px, height: 46.px),
         ),
-        hiSpace(width: 8),
+        hiSpace(width: 8.px),
         Text(
           widget.name,
-          style: TextStyle(fontSize: 11),
+          style: TextStyle(fontSize: 11.px),
         )
       ]),
     );

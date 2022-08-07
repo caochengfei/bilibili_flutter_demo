@@ -8,6 +8,7 @@ import 'package:chewie/chewie.dart' hide MaterialControls;
 import 'package:orientation/orientation.dart';
 import 'package:video_player/video_player.dart';
 import '../widget/hi_video_controls.dart';
+import '../util/rpx.dart';
 
 class VideoView extends StatefulWidget {
   const VideoView(this.url,

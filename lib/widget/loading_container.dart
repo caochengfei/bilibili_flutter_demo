@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:lottie/lottie.dart';
+import '../util/rpx.dart';
 
 class LoadingContainer extends StatelessWidget {
   const LoadingContainer(

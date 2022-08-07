@@ -6,6 +6,7 @@ import 'package:bilibili_demo/widget/video_large_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class RankTabPage extends StatefulWidget {
   final String? sort;
@@ -21,7 +22,7 @@ class _RankTabPageState
   get contentChild => Container(
       child: ListView.builder(
           physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.only(top: 10),
+          padding: EdgeInsets.only(top: 10.px),
           itemCount: dataList.length,
           controller: scrollController,
           itemBuilder: (BuildContext context, int index) {

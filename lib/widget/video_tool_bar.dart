@@ -6,6 +6,7 @@ import 'package:bilibili_demo/util/view_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class VideoToolBar extends StatelessWidget {
   final VideoDetailMo? detailMo;
@@ -29,8 +30,8 @@ class VideoToolBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 10, top: 15),
-      margin: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.only(bottom: 10.px, top: 15.px),
+      margin: EdgeInsets.only(bottom: 15.px),
       decoration: BoxDecoration(border: borderLine(context)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -65,10 +66,10 @@ class VideoToolBar extends StatelessWidget {
             icon,
             color: tint ? primary : Colors.grey,
           ),
-          hiSpace(height: 5),
+          hiSpace(height: 5.px),
           Text(
             text,
-            style: TextStyle(color: Colors.grey, fontSize: 12),
+            style: TextStyle(color: Colors.grey, fontSize: 12.px),
           )
         ],
       ),

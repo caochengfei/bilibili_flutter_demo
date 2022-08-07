@@ -14,6 +14,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../util/string_util.dart';
 import '../http/core/hi_error.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class CFLoginPage extends StatefulWidget {
   const CFLoginPage({Key? key}) : super(key: key);
@@ -62,7 +63,7 @@ class _CFLoginPageState extends State<CFLoginPage> {
               },
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+              padding: EdgeInsets.only(top: 20.px, left: 20.px, right: 20.px),
               child: LoginButton(
                 title: "登录",
                 enable: loginEnable,

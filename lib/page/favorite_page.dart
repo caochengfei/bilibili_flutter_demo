@@ -12,6 +12,7 @@ import 'package:bilibili_demo/widget/video_large_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class CFFavoritePage extends StatefulWidget {
   const CFFavoritePage({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _CFFavoritePageState
         alignment: Alignment.center,
         child: Text(
           "收藏",
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(fontSize: 16.px),
         ),
       ),
     );
@@ -68,7 +69,7 @@ class _CFFavoritePageState
       child: ListView.builder(
           controller: scrollController,
           physics: AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.only(top: 10),
+          padding: EdgeInsets.only(top: 10.px),
           itemCount: dataList.length,
           itemBuilder: (BuildContext context, int index) {
             return VideoLargeCard(

@@ -6,6 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 enum StatusStyle { LIGHT, DARK }
 

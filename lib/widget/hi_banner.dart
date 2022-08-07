@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import '../util/rpx.dart';
 
 class HiBanner extends StatelessWidget {
   const HiBanner(
@@ -17,13 +18,13 @@ class HiBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: bannerHeight,
+      height: bannerHeight.px,
       child: _banner(),
     );
   }
 
   _banner() {
-    var right = 10 + (padding?.horizontal ?? 0) / 2;
+    var right = 10.px + (padding?.horizontal ?? 0) / 2;
     return Swiper(
       itemCount: bannerList?.length ?? 0,
       autoplay: true,
@@ -32,9 +33,9 @@ class HiBanner extends StatelessWidget {
       },
       pagination: SwiperPagination(
           alignment: Alignment.bottomRight,
-          margin: EdgeInsets.only(right: right, bottom: 10),
+          margin: EdgeInsets.only(right: right, bottom: 10.px),
           builder: DotSwiperPaginationBuilder(
-              color: Colors.white60, size: 6, activeSize: 6)),
+              color: Colors.white60, size: 6.px, activeSize: 6.px)),
     );
   }
 
@@ -49,7 +50,7 @@ class HiBanner extends StatelessWidget {
       child: Container(
         padding: padding,
         child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(6)),
+          borderRadius: BorderRadius.all(Radius.circular(6.px)),
           child: Image.network(
             model.cover!,
             fit: BoxFit.cover,

@@ -14,6 +14,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../widget/login_input.dart';
 import '../widget/login_effect.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class CFRegisPage extends StatefulWidget {
   const CFRegisPage({Key? key}) : super(key: key);
@@ -84,7 +85,7 @@ class _CFRegisPageState extends State<CFRegisPage> {
               },
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+              padding: EdgeInsets.only(top: 20.px, left: 20.px, right: 20.px),
               child: LoginButton(
                 title: "注册",
                 enable: loginEnable,

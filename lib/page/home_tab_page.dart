@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_nested/flutter_nested.dart';
+import '../util/rpx.dart';
 
 class CFHomeTabPage extends StatefulWidget {
   final String? catogery;
@@ -73,12 +74,12 @@ class _CFHomeTabPageState
   @override
   get contentChild => HiNestedScrollView(
       itemCount: dataList.length,
-      padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 10.px, left: 10.px, right: 10.px),
       controller: scrollController,
       headers: [
         if (widget.bannerList != null)
           Padding(
-            padding: EdgeInsets.only(bottom: 8),
+            padding: EdgeInsets.only(bottom: 8.px),
             child: _banner(),
           )
       ],

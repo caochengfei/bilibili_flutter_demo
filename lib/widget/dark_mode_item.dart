@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class DarkModeItem extends StatelessWidget {
   const DarkModeItem({Key? key}) : super(key: key);
@@ -20,19 +21,19 @@ class DarkModeItem extends StatelessWidget {
         HiNavigator.getInstantce().onJumpTo(RouteStatus.darkMode);
       },
       child: Container(
-        padding: EdgeInsets.only(top: 10, left: 15, bottom: 15),
+        padding: EdgeInsets.only(top: 10.px, left: 15.px, bottom: 15.px),
         margin: EdgeInsets.only(
-          top: 15,
+          top: 15.px,
         ),
         decoration: BoxDecoration(border: borderLine(context)),
         child: Row(
           children: [
             Text(
               '夜间模式',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 15.px, fontWeight: FontWeight.bold),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 2, left: 10),
+              padding: EdgeInsets.only(top: 2.px, left: 10.px),
               child: Icon(icon),
             )
           ],

@@ -16,6 +16,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../http/dao/home_dao.dart';
 import '../widget/navigationbar.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class CFHomePage extends StatefulWidget {
   final ValueChanged<int>? onJumpTo;
@@ -77,7 +78,7 @@ class _CFHomePageState extends HiState<CFHomePage>
       child: Column(
         children: [
           CFNavigationBar(
-            height: 50,
+            height: 50.px,
             child: _appBar(),
             color: Colors.white,
             statusStyle: StatusStyle.DARK,
@@ -113,7 +114,7 @@ class _CFHomePageState extends HiState<CFHomePage>
         );
       }).toList(),
       controller: _controller,
-      fontSize: 16,
+      fontSize: 16.px,
       borderWidth: 3,
       insets: 13,
       unselectedLabelColor: Colors.black54,
@@ -149,7 +150,7 @@ class _CFHomePageState extends HiState<CFHomePage>
 
   _appBar() {
     return Padding(
-      padding: EdgeInsets.only(left: 15, right: 15),
+      padding: EdgeInsets.only(left: 15.px, right: 15.px),
       child: Row(
         children: [
           InkWell(
@@ -159,22 +160,22 @@ class _CFHomePageState extends HiState<CFHomePage>
               }
             },
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(23),
+              borderRadius: BorderRadius.circular(23.px),
               child: Image(
                 image: AssetImage('images/avatar.png'),
-                height: 46,
-                width: 46,
+                height: 46.px,
+                width: 46.px,
               ),
             ),
           ),
           Expanded(
               child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15),
+            padding: EdgeInsets.only(left: 15.px, right: 15.px),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.px),
               child: Container(
-                padding: EdgeInsets.only(left: 10),
-                height: 32,
+                padding: EdgeInsets.only(left: 10.px),
+                height: 32.px,
                 alignment: Alignment.centerLeft,
                 child: Icon(
                   Icons.search,
@@ -189,7 +190,7 @@ class _CFHomePageState extends HiState<CFHomePage>
             color: Colors.grey,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 12),
+            padding: EdgeInsets.only(left: 12.px),
             child: Icon(
               Icons.mail_outline,
               color: Colors.grey,

@@ -6,6 +6,7 @@ import 'package:bilibili_demo/widget/navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class CFRankingPage extends StatefulWidget {
   const CFRankingPage({Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class _CFRankingPageState extends State<CFRankingPage>
           text: tab['name'],
         );
       }).toList(),
-      fontSize: 16,
+      fontSize: 16.px,
       borderWidth: 3,
       unselectedLabelColor: Colors.black54,
       controller: _controller,

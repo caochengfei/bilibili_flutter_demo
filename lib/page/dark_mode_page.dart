@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import '../util/rpx.dart';
 
 class DarkModePage extends StatefulWidget {
   const DarkModePage({Key? key}) : super(key: key);
@@ -58,8 +59,8 @@ class _DarkModePageState extends State<DarkModePage> {
       },
       child: Container(
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        height: 50,
+        padding: EdgeInsets.symmetric(horizontal: 16.px),
+        height: 50.px,
         child: Row(
           children: [
             Expanded(child: Text(theme['name'])),

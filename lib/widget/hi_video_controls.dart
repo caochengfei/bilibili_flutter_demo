@@ -14,6 +14,7 @@ import 'package:chewie/src/notifiers/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
+import '../util/rpx.dart';
 
 class MaterialControls extends StatefulWidget {
   // 初始化时是否展示loading
@@ -60,8 +61,8 @@ class _MaterialControlsState extends State<MaterialControls>
   Timer? _bufferingDisplayTimer;
   bool _displayBufferingIndicator = false;
 
-  final barHeight = 48.0;
-  final marginSize = 5.0;
+  final barHeight = 48.px;
+  final marginSize = 5.px;
 
   late VideoPlayerController controller;
   ChewieController? _chewieController;
@@ -83,11 +84,11 @@ class _MaterialControlsState extends State<MaterialControls>
             context,
             chewieController.videoPlayerController.value.errorDescription!,
           ) ??
-          const Center(
+          Center(
             child: Icon(
               Icons.error,
               color: Colors.white,
-              size: 42,
+              size: 42.px,
             ),
           );
     }
@@ -230,7 +231,7 @@ class _MaterialControlsState extends State<MaterialControls>
       child: Container(
         height: barHeight,
         color: Colors.transparent,
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+        padding: EdgeInsets.only(left: 10.px, right: 10.px),
         child: Icon(
           controller.value.isPlaying
               ? Icons.pause_rounded
@@ -422,23 +423,23 @@ class _MaterialControlsState extends State<MaterialControls>
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).dialogBackgroundColor,
-                        borderRadius: BorderRadius.circular(48.0),
+                        borderRadius: BorderRadius.circular(48.0.px),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.px),
                         child: IconButton(
                           onPressed: () {
                             _playPause();
                           },
                           icon: isFinished
-                              ? const Icon(
+                              ? Icon(
                                   Icons.replay,
-                                  size: 32.0,
+                                  size: 32.px,
                                 )
                               : AnimatedIcon(
                                   icon: AnimatedIcons.play_pause,
                                   progress: playPauseIconAnimationController,
-                                  size: 32.0,
+                                  size: 32.px,
                                 ),
                         ),
                       ),
@@ -715,15 +716,15 @@ class _PlaybackSpeedDialog extends StatelessWidget {
               if (_speed == _selected)
                 Icon(
                   Icons.check,
-                  size: 20,
+                  size: 20.px,
                   color: selectedColor,
                 )
               else
                 Container(
-                  width: 20,
+                  width: 20.px,
                 ),
-              const SizedBox(
-                width: 16,
+              SizedBox(
+                width: 16.px,
               ),
               Text(_speed.toString())
             ],

@@ -4,6 +4,7 @@ import 'package:bilibili_demo/util/view_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class ExpandableContent extends StatefulWidget {
   final VideoModel mo;
@@ -43,11 +44,11 @@ class _ExpandableContentState extends State<ExpandableContent>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+      padding: EdgeInsets.only(left: 15.px, right: 15.px, top: 5.px),
       child: Column(
         children: [
           _buildTitle(),
-          Padding(padding: EdgeInsets.only(bottom: 8)),
+          Padding(padding: EdgeInsets.only(bottom: 8.px)),
           _buildInfo(),
           _buildDesc()
         ],
@@ -68,13 +69,13 @@ class _ExpandableContentState extends State<ExpandableContent>
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           )),
-          Padding(padding: EdgeInsets.only(left: 15)),
+          Padding(padding: EdgeInsets.only(left: 15.px)),
           Icon(
             _expand
                 ? Icons.keyboard_arrow_up_sharp
                 : Icons.keyboard_arrow_down_sharp,
             color: Colors.grey,
-            size: 16,
+            size: 16.px,
           )
         ],
       ),
@@ -94,16 +95,16 @@ class _ExpandableContentState extends State<ExpandableContent>
   }
 
   _buildInfo() {
-    var style = TextStyle(fontSize: 12, color: Colors.grey);
+    var style = TextStyle(fontSize: 12.px, color: Colors.grey);
     var dateStr = (widget.mo.createTime?.length ?? 0) > 10
         ? widget.mo.createTime?.substring(5, 10)
         : widget.mo.createTime;
     return Row(
       children: [
         ...smallIconText(Icons.ondemand_video, widget.mo.view),
-        Padding(padding: EdgeInsets.only(left: 10)),
+        Padding(padding: EdgeInsets.only(left: 10.px)),
         ...smallIconText(Icons.list_alt, widget.mo.reply),
-        Padding(padding: EdgeInsets.only(left: 10)),
+        Padding(padding: EdgeInsets.only(left: 10.px)),
         Text(
           "$dateStr",
           style: style,
@@ -116,7 +117,7 @@ class _ExpandableContentState extends State<ExpandableContent>
     var child = _expand
         ? Text(
             widget.mo.desc ?? "",
-            style: TextStyle(fontSize: 12, color: Colors.grey),
+            style: TextStyle(fontSize: 12.px, color: Colors.grey),
           )
         : null;
     // 构建动画widget
@@ -130,7 +131,7 @@ class _ExpandableContentState extends State<ExpandableContent>
           child: Container(
             // 撑满宽度 内容对其
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.only(top: 8),
+            padding: EdgeInsets.only(top: 8.px),
             child: child,
           ),
         );

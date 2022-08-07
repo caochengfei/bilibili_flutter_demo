@@ -2,6 +2,7 @@ import 'package:bilibili_demo/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../util/rpx.dart';
 
 class LoginInput extends StatefulWidget {
   final String? title;
@@ -48,15 +49,16 @@ class _LoginInputState extends State<LoginInput> {
         Row(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: EdgeInsets.only(left: 15.px),
               width: 100,
-              child: Text(widget.title ?? "", style: TextStyle(fontSize: 16)),
+              child:
+                  Text(widget.title ?? "", style: TextStyle(fontSize: 16.px)),
             ),
             _input()
           ],
         ),
         Padding(
-          padding: EdgeInsets.only(left: !widget.lineStretch ? 15 : 0),
+          padding: EdgeInsets.only(left: !widget.lineStretch ? 15.px : 0),
           child: Divider(
             height: 1,
             thickness: 0.5,
@@ -75,12 +77,12 @@ class _LoginInputState extends State<LoginInput> {
       keyboardType: widget.keyboardType,
       autofocus: !widget.obscureText,
       cursorColor: primary,
-      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+      style: TextStyle(fontSize: 16.px, fontWeight: FontWeight.w300),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 20, right: 20),
+          contentPadding: EdgeInsets.only(left: 20.px, right: 20.px),
           border: InputBorder.none,
           hintText: widget.hint ?? "",
-          hintStyle: TextStyle(fontSize: 15, color: Colors.grey)),
+          hintStyle: TextStyle(fontSize: 15.px, color: Colors.grey)),
     ));
   }
 }
